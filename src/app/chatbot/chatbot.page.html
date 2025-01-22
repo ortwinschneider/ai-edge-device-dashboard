@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Chatbot</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <!-- Fixed-height chat container -->
+    <div class="chat-container" #chatContainer>
+      <div *ngFor="let message of messages" [ngClass]="{'user': message.sender === 'user', 'bot': message.sender === 'bot'}">
+        <p class="message-text">{{ message.text }}</p>
+      </div>
+    </div>
+
+    <!-- Fixed input block -->
+    <div class="fixed-input">
+
+      <!-- reacting on enter key: (keydown.enter)="sendMessage()" -->
+      <!--<ion-input [(ngModel)]="userInput" placeholder="Type a message..." clear-input></ion-input>-->
+      <ion-textarea [autoGrow]="true" label="Message ChatGPT" labelPlacement="floating" fill="outline" placeholder="Type a message..." [(ngModel)]="userInput" clear-input></ion-textarea>
+      <ion-button (click)="sendMessage()" color="secondary" size="large">Send</ion-button>
+      <ion-button (click)="clearMessages()" color="danger" size="large">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </div>
+
+</ion-content>
+
+

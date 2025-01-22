@@ -1,0 +1,84 @@
+.chat-container {
+  position: relative;
+  height: calc(100vh - 250px); /* Adjust height to fit the header and input block */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 20px;
+  //background-color: #f9f9f9; /* Optional: Light background */
+  margin-left: 20%;
+  margin-right: 20%;
+  display: flex;
+  flex-direction: column;
+  //border: 1px solid #fff;
+}
+
+.chat-container div {
+  margin-bottom: 10px; /* Add spacing between messages */
+  padding: 8px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for chat bubbles */
+}
+
+.message-text {
+  white-space: pre-wrap; /* Preserve new lines and spaces */
+  word-wrap: break-word; /* Prevent long words from overflowing */
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+
+.user {
+  align-self: flex-end;
+  background-color: #444; /* Light green for user messages */
+  color: #fff;
+}
+
+.bot {
+  align-self: flex-start;
+  background-color: #5f0707; /* Light red for bot messages */
+  color: #fff;
+}
+.user {
+  align-self: flex-end;
+  background-color: #444;
+  padding: 8px;
+  margin: 5px;
+  border-radius: 8px;
+}
+.bot {
+  align-self: flex-start;
+  background-color: #5f0707;
+  padding: 8px;
+  margin: 5px;
+  border-radius: 8px;
+}
+
+.fixed-input {
+  margin-left: 20%;
+  margin-right: 20%;
+  position: fixed;
+  bottom: 100px;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  background-color: #4a4747; /* Background color */
+  padding: 10px;
+  //border: 2px solid #d8cfcf; /* Optional: Add a border */
+  z-index: 10; /* Ensure it stays above other content */
+  border-radius: 10px;
+}
+
+ion-input {
+  flex: 1; /* Make the input take up most of the space */
+  margin-right: 10px; /* Space between the input and button */
+}
+
+ion-button {
+  flex-shrink: 0; /* Prevent the button from shrinking */
+}
+
+ion-content {
+  --background: url('https://i.redd.it/1bb3p4m6osp81.png') no-repeat center center / cover;
+}
+
