@@ -7,10 +7,16 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import {
+  provideCharts,
+  withDefaultRegisterables,
+  } from 'ng2-charts';
+
+
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, [ provideCharts(withDefaultRegisterables()), ]],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

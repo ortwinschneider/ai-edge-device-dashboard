@@ -8,9 +8,42 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">battery-dashboard</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-content>
+    <div class="chart-container">
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>State of Charge</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <canvas baseChart [datasets]="stateOfChargeData" [labels]="chartLabels" [options]="chartOptions" [type]="'line'">
+          </canvas>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Battery Current & Voltage</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <canvas baseChart [datasets]="currentVoltageData" [labels]="chartLabels" [options]="chartOptions" [type]="'line'">
+          </canvas>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Temperatures</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <canvas baseChart [datasets]="temperatureData" [labels]="chartLabels" [options]="chartOptions" [type]="'line'">
+          </canvas>
+        </ion-card-content>
+      </ion-card>
+
+    </div>
+  </ion-content>
 </ion-content>

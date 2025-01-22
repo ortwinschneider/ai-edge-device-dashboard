@@ -8,13 +8,15 @@ import { BatteryDashboardPageRoutingModule } from './battery-dashboard-routing.m
 
 import { BatteryDashboardPage } from './battery-dashboard.page';
 
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    BatteryDashboardPageRoutingModule
+    BatteryDashboardPageRoutingModule,
+
   ],
-  declarations: [BatteryDashboardPage]
+  declarations: []
 })
 export class BatteryDashboardPageModule {}
