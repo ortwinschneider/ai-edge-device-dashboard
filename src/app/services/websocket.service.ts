@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
+import { ConfigService } from './config.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ export class WebsocketService {
   private messagesSubject = new Subject<any>();
   public messages$ = this.messagesSubject.asObservable();
 
-  constructor() {
+  constructor(private configService: ConfigService) {
     console.debug('new WebsocketService()');
   }
 
@@ -23,7 +24,7 @@ export class WebsocketService {
 
   private getNewWebSocket(): WebSocketSubject<any> {
     return webSocket({
-      url: 'ws://websocket-battery-simulation.apps.ocp4.rhlab.de/battery/metrics/'
+      url: this.configService.BATTERY_METRICS_WS_ENDPOINT
       //binaryType: 'arraybuffer'
     }
 

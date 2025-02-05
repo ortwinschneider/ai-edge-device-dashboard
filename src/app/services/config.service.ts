@@ -1,0 +1,27 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+
+@Injectable({
+    providedIn: 'root'
+})
+export class ConfigService {
+
+  BATTERY_METRICS_WS_ENDPOINT: any;
+  OPEN_AI_API_KEY: any;
+
+    constructor(public http: HttpClient) {}
+
+    async loadConfigurationData() {
+        console.debug('loadConfigurationData');
+
+        const data = await this.http.get<any>('/assets/config.json').toPromise();
+
+        console.debug('App config loaded: ' + JSON.stringify(data));
+
+        this.BATTERY_METRICS_WS_ENDPOINT = data.BATTERY_METRICS_WS_ENDPOINT;
+        this.OPEN_AI_API_KEY = data.OPEN_AI_API_KEY;
+
+    }
+
+}

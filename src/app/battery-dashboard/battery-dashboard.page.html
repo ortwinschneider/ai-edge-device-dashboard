@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Battery Dashboard</ion-title>
+    <ion-title>Battery Management System - Dashboard</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,7 +13,53 @@
 
       <ion-card>
         <ion-card-header>
-          <ion-card-title>State of Charge</ion-card-title>
+          <ion-card-title>Battery Specification</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div class="content">
+            Battery ID: 1    <br/>
+            Capacity: 100kwh    <br/>
+            Battery Type: Lithium-ion<br/>
+            Number of Cells: 7920 <br/>
+            Car model: Tesla Model S    <br/><br/>
+            <img src="https://p.turbosquid.com/ts-thumb/ZR/giIOn7/nR/b_.0035/jpg/1661341067/600x600/fit_q87/0007e12883a769a98ba541ea9b8f3f72b32e9eff/b_.0035.jpg" width="400px" />
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Battery Simulation</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div class="content">
+            Battery ID: 1    <br/>
+            <ion-button color="danger">Simulate System Fault</ion-button><br/>
+            <ion-button color="danger">Simulate Cell Fault</ion-button><br/>
+            <ion-button color="danger">Simulate Voltage Drop</ion-button><br/>
+            <ion-button color="danger">Simulate Sensor Fault</ion-button><br/>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Battery Alerts</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div class="content">
+            Battery ID: 1    <br/>
+            <h3 color="danger" style="font-size: 28px; color: red;"> No Alerts</h3><br/>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>State of Charge (SoC) & State of Health (SoH)</ion-card-title>
         </ion-card-header>
 
         <ion-card-content>
@@ -24,11 +70,11 @@
 
       <ion-card>
         <ion-card-header>
-          <ion-card-title>Battery Current & Voltage</ion-card-title>
+          <ion-card-title>Battery Current & Speed</ion-card-title>
         </ion-card-header>
 
         <ion-card-content>
-          <canvas baseChart [datasets]="currentVoltageData" [labels]="chartLabels" [options]="chartOptions" [type]="'line'">
+          <canvas baseChart [datasets]="currentSpeedData" [labels]="chartLabels" [options]="chartOptions" [type]="'line'">
           </canvas>
         </ion-card-content>
       </ion-card>
@@ -40,6 +86,28 @@
 
         <ion-card-content>
           <canvas baseChart [datasets]="temperatureData" [labels]="chartLabels" [options]="chartOptions" [type]="'line'">
+          </canvas>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Voltage</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <canvas baseChart [datasets]="voltageData" [labels]="chartLabels" [options]="chartOptions" [type]="'line'">
+          </canvas>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Driving Distance (km)</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <canvas baseChart [datasets]="distanceData" [labels]="chartLabels" [options]="chartOptions" [type]="'line'">
           </canvas>
         </ion-card-content>
       </ion-card>

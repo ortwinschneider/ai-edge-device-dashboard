@@ -1,11 +1,16 @@
 .chart-container {
   padding: 16px;
   display: flex;
-  float: left;
+  flex-wrap: wrap;
 }
 
 canvas {
   display: block;
   width: 700px;
   height: 600px;
+}
+
+.content {
+  display: block;
+  width: 700px;
 }

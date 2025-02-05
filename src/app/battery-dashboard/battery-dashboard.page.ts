@@ -17,17 +17,25 @@ export class BatteryDashboardPage implements OnInit, OnDestroy {
   @ViewChildren(BaseChartDirective) components: QueryList<BaseChartDirective>;
 
   // Chart data
-  stateOfChargeData: any[] = [{ data: [], label: 'State of Charge (%)' }];
-  currentVoltageData: any[] = [
-    { data: [], label: 'Battery Current (A)' },
-    { data: [], label: 'Battery Voltage (V)' },
+  stateOfChargeData: any[] = [
+    { data: [], label: 'State of Charge (%)' },
+    { data: [], label: 'State of Health (%)' }
   ];
+
+  currentSpeedData: any[] = [
+    { data: [], label: 'Battery Current (A)' },
+    { data: [], label:  'Speed (km/h)'},
+  ];
+
   temperatureData: any[] = [
     { data: [], label: 'Battery Temp (°C)' },
     { data: [], label: 'Ambient Temp (°C)' },
   ];
-  chartLabels: string[] = [];
 
+  voltageData: any[] = [{ data: [], label: 'Battery Voltage (V)' }];
+  distanceData: any[] = [{ data: [], label: 'Distance (km)' }];
+
+  chartLabels: string[] = [];
   chartOptions: any = {
     responsive: false,
     maintainAspectRatio: true,
@@ -47,19 +55,25 @@ export class BatteryDashboardPage implements OnInit, OnDestroy {
 
       // Update chart data
       this.stateOfChargeData[0].data.push((data.stateOfCharge * 100).toFixed(2));
-      this.currentVoltageData[0].data.push(data.batteryCurrent.toFixed(2));
-      this.currentVoltageData[1].data.push(data.batteryVoltage.toFixed(2));
+      this.stateOfChargeData[1].data.push((data.stateOfHealth).toFixed(2));
+      this.currentSpeedData[0].data.push(data.batteryCurrent.toFixed(2));
+      this.currentSpeedData[1].data.push(data.kmh.toFixed(2));
       this.temperatureData[0].data.push(data.batteryTemp.toFixed(2));
       this.temperatureData[1].data.push(data.ambientTemp.toFixed(2));
+      this.voltageData[0].data.push(data.batteryVoltage.toFixed(2));
+      this.distanceData[0].data.push(data.distance.toFixed(2));
 
       // Keep only the latest 10 data points
       if (this.chartLabels.length > 25) {
         this.chartLabels.shift();
         this.stateOfChargeData[0].data.shift();
-        this.currentVoltageData[0].data.shift();
-        this.currentVoltageData[1].data.shift();
+        this.stateOfChargeData[1].data.shift();
+        this.currentSpeedData[0].data.shift();
+        this.currentSpeedData[1].data.shift();
         this.temperatureData[0].data.shift();
         this.temperatureData[1].data.shift();
+        this.voltageData[0].data.shift();
+        this.distanceData[0].data.shift();
       }
 
       //this.chart?.update();

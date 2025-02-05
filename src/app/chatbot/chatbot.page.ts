@@ -1,6 +1,6 @@
 import { Component,ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment.prod';
+import { ConfigService } from '../services/config.service';
 
 @Component({
   selector: 'app-chatbot',
@@ -12,7 +12,7 @@ export class ChatbotPage {
   userInput = '';
   @ViewChild('chatContainer') chatContainer!: ElementRef;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private configService: ConfigService) {}
 
   sendMessage() {
     if (this.userInput.trim()) {
@@ -20,10 +20,10 @@ export class ChatbotPage {
       this.messages.push({ sender: 'user', text: userMessage });
       this.userInput = '';
 
-      // setTimeout(() => {
-      //   this.messages.push({ sender: 'bot', text: 'This is a static bot response.' });
-      //   this.scrollToBottom();
-      // }, 1000);
+      setTimeout(() => {
+        this.messages.push({ sender: 'bot', text: 'This is a static bot response.' });
+        this.scrollToBottom();
+      }, 1000);
 
       // Call ChatGPT backend
       this.http
@@ -32,7 +32,7 @@ export class ChatbotPage {
           model: 'gpt-3.5-turbo',
           messages: [{ role: 'user', content: userMessage }],
         }, {
-          headers: { 'Authorization': `Bearer ` + environment.openAIKey }
+          headers: { 'Authorization': `Bearer ` + this.configService.OPEN_AI_API_KEY }
         })
         .subscribe((response: any) => {
           const botMessage = response.choices[0].message.content;
