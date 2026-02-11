@@ -12,10 +12,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'chatbot',
-    loadChildren: () => import('./chatbot/chatbot.module').then( m => m.ChatbotPageModule)
-  },
-  {
     path: 'battery-dashboard',
     loadChildren: () => import('./battery-dashboard/battery-dashboard.module').then( m => m.BatteryDashboardPageModule)
   },

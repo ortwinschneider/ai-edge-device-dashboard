@@ -16,6 +16,16 @@ export class BatteryDashboardPage implements OnInit, OnDestroy {
   //@ViewChild(BaseChartDirective) chart?: BaseChartDirective;
   @ViewChildren(BaseChartDirective) components: QueryList<BaseChartDirective>;
 
+  curentVoltage = 0.0;
+  currentSpeed = 0.0;
+  currentBatteryCurrent = 0.0;
+  currentBatteryTemp = 0.0;
+  currentAmbientTemp = 0.0;
+  currentStateOfCharge = 0.0;
+  currentStateOfHealth = 0.0;
+  currentDistance = 0.0;
+  currentLoad = 0.0;
+
   // Chart data
   stateOfChargeData: any[] = [
     { data: [], label: 'State of Charge (%)' },
@@ -62,6 +72,16 @@ export class BatteryDashboardPage implements OnInit, OnDestroy {
       this.temperatureData[1].data.push(data.ambientTemp.toFixed(2));
       this.voltageData[0].data.push(data.batteryVoltage.toFixed(2));
       this.distanceData[0].data.push(data.distance.toFixed(2));
+
+      this.curentVoltage = data.batteryVoltage.toFixed(2)
+      this.currentSpeed = data.kmh.toFixed(2)
+      this.currentBatteryCurrent = data.batteryCurrent.toFixed(2)
+      this.currentBatteryTemp = data.batteryTemp.toFixed(2)
+      this.currentAmbientTemp = data.ambientTemp.toFixed(2)
+      this.currentStateOfCharge = (data.stateOfCharge).toFixed(4)
+      this.currentStateOfHealth = (data.stateOfHealth).toFixed(4)
+      this.currentDistance = (data.distance).toFixed(2)
+      this.currentLoad = (data.currentLoad).toFixed(2)
 
       // Keep only the latest 10 data points
       if (this.chartLabels.length > 25) {
