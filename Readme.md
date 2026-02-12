@@ -29,16 +29,16 @@ The output will be written in the `www` folder
 ## Build the container image and push it to the registry
 
 ```bash
-podman build --platform=linux/amd64 -t quay.io/oschneid/chatbot:1.0 .
+podman build --platform=linux/amd64 -t quay.io/oschneid/chatbot:agv-1.0 .
 ```
 If you want to run the container locally, execute:
 
 ```bash
-podman run -it --rm -d -p 8080:8080 --name web quay.io/oschneid/chatbot:1.0
+podman run -it --rm -d -p 8080:8080 --name web quay.io/oschneid/chatbot:agv-1.0
 ```
 
 Push the container image to the registry:
 
 ```bash
-podman push quay.io/oschneid/chatbot:1.0
+podman push quay.io/oschneid/chatbot:agv-1.0
 ```

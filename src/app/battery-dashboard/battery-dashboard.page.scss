@@ -12,5 +12,48 @@ canvas {
 
 .content {
   display: block;
-  width: 700px;
+  width: 600px;
+  height: 500px;
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.alert-container div {
+  margin-bottom: 10px; /* Add spacing between messages */
+  padding: 8px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for chat bubbles */
+  height: 500px;
+  overflow-y: auto; /* Enable vertical scrolling */
+  width: 500px;
+}
+
+.message-text {
+  white-space: pre-wrap; /* Preserve new lines and spaces */
+  word-wrap: break-word; /* Prevent long words from overflowing */
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.info {
+  color: #fff;
+  font-size: 18px;
+}
+
+.warning {
+  color: yellow;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.danger {
+  color: red;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.inference {
+  color: rgb(171, 186, 239);
+  font-weight: bold;
+  font-size: 18px;
 }
