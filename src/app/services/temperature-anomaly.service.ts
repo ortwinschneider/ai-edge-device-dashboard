@@ -11,11 +11,11 @@ export class TemperatureAnomalyService {
     }
 
     enableTemperatureAnomaly(batteryId: number) {
-        return this.http.get<any[]>(this.configService.BATTERY_SIMULATION_API_ENDPOINT+'simulator/enableBatteryTempAnomaly/' + batteryId);
+        return this.http.get(this.configService.BATTERY_SIMULATION_API_ENDPOINT+'simulator/enableBatteryTempAnomaly/' + batteryId, { responseType: 'text' });
     }
 
     disableTemperatureAnomaly(batteryId: number) {
-        return this.http.get<any[]>(this.configService.BATTERY_SIMULATION_API_ENDPOINT+'simulator/disableBatteryTempAnomaly/' + batteryId);
+        return this.http.get(this.configService.BATTERY_SIMULATION_API_ENDPOINT+'simulator/disableBatteryTempAnomaly/' + batteryId, { responseType: 'text' });
     }
 
 }

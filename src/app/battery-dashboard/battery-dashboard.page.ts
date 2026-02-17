@@ -120,13 +120,13 @@ export class BatteryDashboardPage implements OnInit, OnDestroy {
   enableTemperatureAnomaly() {
     this.temperatureAnomalyService.enableTemperatureAnomaly(1).subscribe(
       response => {
-        console.log('Temperature anomaly enabled:', response);
+        console.log(response);
         this.alerts.unshift({ sender: 'info', text: 'Temperature anomaly enabled.', date: new Date() });
         this.presentToast("<h2>Temperature anomaly enabled</h2>", 3000);
       },
       error => {
-        console.error('Error enabling temperature anomaly:', error);
-        this.alerts.unshift({ sender: 'info', text: 'Temperature anomaly enabled.', date: new Date() });
+        console.error(error);
+        this.alerts.unshift({ sender: 'info', text: 'Error enabling temperature anomaly.', date: new Date() });
         this.presentToast("<h2>Error enabling temperature anomaly</h2>", 3000);
       }
     );
@@ -135,13 +135,13 @@ export class BatteryDashboardPage implements OnInit, OnDestroy {
   disableTemperatureAnomaly() {
     this.temperatureAnomalyService.disableTemperatureAnomaly(1).subscribe(
       response => {
-        console.log('Temperature anomaly disabled:', response);
+        console.log(response);
         this.alerts.unshift({ sender: 'info', text: 'Temperature anomaly disabled.', date: new Date() });
         this.presentToast("<h2>Temperature anomaly disabled</h2>", 3000);
       },
       error => {
-        console.error('Error disabling temperature anomaly:', error);
-        this.alerts.unshift({ sender: 'info', text: 'Temperature anomaly disabled.', date: new Date() });
+        console.error(error);
+        this.alerts.unshift({ sender: 'info', text: 'Error disabling temperature anomaly.', date: new Date() });
         this.presentToast("<h2>Error disabling temperature anomaly</h2>", 3000);
       }
     );
